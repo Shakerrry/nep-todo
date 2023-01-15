@@ -1,4 +1,4 @@
-##Steps to run the project
+## Steps to run the project  
 `composer install`  
 `cp .env.example .env`  
 edit mysql connection  
