@@ -1,17 +1,17 @@
 <template>
   <input placeholder="Type task name*" type="text"
-         v-model="store.state.task.task.name"
+         v-model="task.name"
          :class="(errors.name) ? 'bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500': 'border-gray-200 focus:border-indigo-500 focus:ring-indigo-500'"
          class="mt-1 block w-full border rounded-md shadow-sm p-4">
   <p v-show="errors.name" class="mt-2 text-sm text-red-600">{{ errors.name }}</p>
   <textarea rows="2"
             :class="(errors.description) ? 'bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500': 'border-gray-200 focus:border-indigo-500 focus:ring-indigo-500'"
             class="mt-3 block w-full rounded-md border shadow-sm py-2.5 px-4"
-            v-model="store.state.task.task.description"
+            v-model="task.description"
             placeholder="Description"></textarea>
   <p v-show="errors.description" class="mt-2 text-sm text-red-600">{{ errors.description }}</p>
   <div class="flex items-center my-4">
-    <input type="checkbox" class="h-6 w-6 border-gray-300 text-indigo-600 focus:ring-indigo-500" v-model="store.state.task.task.completed">
+    <input type="checkbox" class="h-6 w-6 border-gray-300 text-indigo-600 focus:ring-indigo-500" v-model="task.completed">
     <label class="ml-3 block text-md font-medium text-gray-700">Completed</label>
   </div>
   <div class="flex gap-2">
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import {watch, reactive} from "vue";
+import {watch, reactive, computed} from "vue";
 import {useStore} from "vuex";
 import router from "../router";
 
@@ -42,6 +42,10 @@ export default {
     const errors = reactive({
       'name': '',
       'description': ''
+    });
+
+    const task = computed(function () {
+      return store.state.task.task;
     });
 
     function saveTask() {
@@ -72,7 +76,7 @@ export default {
       saveTask,
       goBack,
       errors,
-      store
+      task
     };
   }
 };
