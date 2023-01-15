@@ -6,3 +6,5 @@ edit mysql connection
 `npm i`  
 `npm run build`  
 `php artisan serve`
+## Postman
+I have included a postman json collection if you want to test the backend separately
