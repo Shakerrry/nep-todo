@@ -1,5 +1,5 @@
 ## Steps to run the project  
-`composer install`  
+`composer install`   
 `cp .env.example .env`  
 edit mysql connection  
 `php artisan migrate`  
