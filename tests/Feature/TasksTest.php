@@ -19,9 +19,21 @@ class TasksTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+        $this->assertTrue($response['success']);
     }
 
-    public function test_tasks_can_be_retreieved()
+    public function test_task_create_validation()
+    {
+        $response = $this->post('/api/tasks', [
+            'name' => 'te',
+        ]);
+
+        $response->assertStatus(422);
+        $this->assertFalse($response['success']);
+        $response->assertJsonValidationErrors(['name']);
+    }
+
+    public function test_tasks_can_be_retrieved()
     {
         Task::factory()->createOne();
 

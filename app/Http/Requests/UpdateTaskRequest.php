@@ -37,7 +37,7 @@ class UpdateTaskRequest extends FormRequest
         $errors = $validator->errors();
 
         $response = response()->json([
-            'success' => 'false',
+            'success' => false,
             'errors' => $errors->messages(),
         ], 422);
 
