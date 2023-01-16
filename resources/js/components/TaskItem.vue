@@ -3,10 +3,10 @@
     <div class="flex gap-2">
       <div class="relative w-full bg-[#e0ebff] rounded-[7px] flex justify-start items-center p-3 cursor-pointer" @click="complete()">
         <span class="absolute bg-indigo-500 -top-4 rounded-lg shadow-lg right-0 px-4 py-1 text-sm text-white font-regular italic">{{ formattedDate }}</span>
-        <span :class="(task.completed) ? 'green' : ''" class="w-[33px] h-[30px] bg-white rounded-full border border-white transition-all hover:border-[#36d344] flex justify-center items-center"><i class="text-white fa fa-check"></i></span>
+        <span :class="(task.completed) ? 'bg-green-500' : 'bg-white'" class="w-[33px] h-[30px] rounded-full border border-white transition-all hover:border-[#36d344] flex justify-center items-center"><i class="text-white fa fa-check"></i></span>
         <div class="flex flex-col w-full ml-4 text-[#5b7a9d]">
-          <strike :class="(!task.completed) ? 'strike_none' : ''" class="text-md font-semibold">{{ task.name }}</strike>
-          <strike :class="(!task.completed) ? 'strike_none' : ''" class="text-sm font-regular">{{ task.description }}</strike>
+          <p :class="(task.completed) ? 'line-through' : ''" class="text-md font-semibold">{{ task.name }}</p>
+          <p :class="(task.completed) ? 'line-through' : ''" class="text-sm font-regular">{{ task.description }}</p>
         </div>
       </div>
       <button
@@ -68,10 +68,4 @@ export default {
 </script>
 
 <style>
-.strike_none{
-  text-decoration:none;
-}
-.green{
-  background-color:green !important;
-}
 </style>
